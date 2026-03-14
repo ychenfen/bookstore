@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS `users` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `openId` varchar(64) NOT NULL,\n  `name` text,\n  `email` varchar(320),\n  `loginMethod` varchar(64),\n  `role` enum('user','admin') NOT NULL DEFAULT 'user',\n  `createdAt` timestamp NOT NULL DEFAULT (now()),\n  `updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,\n  `lastSignedIn` timestamp NOT NULL DEFAULT (now()),\n  CONSTRAINT `users_id` PRIMARY KEY(`id`),\n  CONSTRAINT `users_openId_unique` UNIQUE(`openId`)\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 28x2P3JmTyziHE5.root --database KWUBsCGWudGpaLVFQWSxu4 --execute CREATE TABLE IF NOT EXISTS `users` (\n  `id` int AUTO_INCREMENT NOT NULL,\n  `openId` varchar(64) NOT NULL,\n  `name` text,\n  `email` varchar(320),\n  `loginMethod` varchar(64),\n  `role` enum('user','admin') NOT NULL DEFAULT 'user',\n  `createdAt` timestamp NOT NULL DEFAULT (now()),\n  `updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,\n  `lastSignedIn` timestamp NOT NULL DEFAULT (now()),\n  CONSTRAINT `users_id` PRIMARY KEY(`id`),\n  CONSTRAINT `users_openId_unique` UNIQUE(`openId`)\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1722
+}

@@ -1,0 +1,27 @@
+# Project TODO
+
+- [x] Database schema design (books, categories, cart_items, orders, order_items)
+- [x] Seed sample book data
+- [x] Backend: Book listing with pagination
+- [x] Backend: Book search by title/author
+- [x] Backend: Book category filtering
+- [x] Backend: Book detail endpoint
+- [x] Backend: Cart CRUD (add, remove, update quantity)
+- [x] Backend: Order creation and checkout
+- [x] Backend: Order history for user
+- [x] Backend: Admin book management (CRUD)
+- [x] Backend: Admin category management
+- [x] Frontend: Global navigation and layout
+- [x] Frontend: Homepage with featured books
+- [x] Frontend: Book listing page with pagination
+- [x] Frontend: Book search functionality
+- [x] Frontend: Book category filter
+- [x] Frontend: Book detail page
+- [x] Frontend: Shopping cart page
+- [x] Frontend: Checkout and order creation
+- [x] Frontend: Order history page
+- [x] Frontend: Admin dashboard - book management
+- [x] Frontend: Admin dashboard - category management
+- [x] Frontend: Responsive design
+- [x] Frontend: Theme and styling (clean, modern)
+- [x] Vitest unit tests

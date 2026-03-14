@@ -28,20 +28,20 @@
 - [x] Add cover images for all books
 - [x] Improve client-side book card image display
 - [x] Improve admin panel book image display
-- [ ] Check and fix: all page navigation links work
+- [x] Check and fix: all page navigation links work
 - [ ] Check and fix: book detail page add-to-cart works
 - [ ] Check and fix: cart quantity update and remove works
 - [ ] Check and fix: checkout and order creation flow works
 - [ ] Check and fix: admin CRUD operations all work
-- [ ] Check and fix: admin order status management (ship, complete)
-- [ ] Enrich: add more books to cover all categories
+- [x] Check and fix: admin order status management (ship, complete)
+- [x] Enrich: add more books to cover all categories
 - [ ] Enrich: homepage show books with cover images properly
-- [ ] Enrich: book detail page show more info (ISBN, publisher, pages)
-- [ ] Enrich: user profile page
-- [ ] Enrich: footer component
-- [ ] Enrich: admin order status update (ship/complete/cancel)
+- [x] Enrich: book detail page show more info (ISBN, publisher, pages)
+- [x] Enrich: user profile page
+- [x] Enrich: footer component
+- [x] Enrich: admin order status update (ship/complete/cancel)
 - [ ] Enrich: book stock validation on checkout
 - [ ] Enrich: empty state improvements across all pages
-- [ ] Add simulate payment feature for orders
-- [ ] Add "pay now" button for pending orders
+- [x] Add simulate payment feature for orders
+- [x] Add "pay now" button for pending orders
 - [ ] Enrich admin dashboard stats (recent orders list)

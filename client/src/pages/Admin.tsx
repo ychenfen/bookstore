@@ -62,31 +62,88 @@ export default function Admin() {
 function StatsPanel() {
   const statsQuery = trpc.admin.stats.useQuery();
   const stats = statsQuery.data;
+  const recentOrdersQuery = trpc.admin.orders.useQuery({ page: 1, pageSize: 5 });
+  const recentOrders = recentOrdersQuery.data?.orders || [];
 
   const items = [
-    { icon: BookOpen, label: "在售书籍", value: stats?.totalBooks || 0, color: "text-blue-600" },
-    { icon: Package, label: "总订单数", value: stats?.totalOrders || 0, color: "text-green-600" },
-    { icon: Users, label: "注册用户", value: stats?.totalUsers || 0, color: "text-purple-600" },
-    { icon: DollarSign, label: "销售总额", value: `¥${parseFloat(stats?.totalRevenue || "0").toFixed(2)}`, color: "text-red-600" },
+    { icon: BookOpen, label: "在售书籍", value: stats?.totalBooks || 0, color: "text-blue-600", bg: "bg-blue-50" },
+    { icon: Package, label: "总订单数", value: stats?.totalOrders || 0, color: "text-green-600", bg: "bg-green-50" },
+    { icon: Users, label: "注册用户", value: stats?.totalUsers || 0, color: "text-purple-600", bg: "bg-purple-50" },
+    { icon: DollarSign, label: "销售总额", value: `¥${parseFloat(stats?.totalRevenue || "0").toFixed(2)}`, color: "text-red-600", bg: "bg-red-50" },
   ];
 
+  const statusLabels: Record<string, { label: string; color: string }> = {
+    pending: { label: "待付款", color: "text-amber-600 bg-amber-50" },
+    paid: { label: "已付款", color: "text-blue-600 bg-blue-50" },
+    shipped: { label: "已发货", color: "text-purple-600 bg-purple-50" },
+    completed: { label: "已完成", color: "text-green-600 bg-green-50" },
+    cancelled: { label: "已取消", color: "text-red-600 bg-red-50" },
+  };
+
   return (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      {items.map((item, i) => (
-        <Card key={i}>
-          <CardContent className="p-5">
-            <div className="flex items-center gap-3">
-              <div className={`h-10 w-10 rounded-lg bg-muted flex items-center justify-center ${item.color}`}>
-                <item.icon className="h-5 w-5" />
+    <div className="space-y-6">
+      {/* Stats cards */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {items.map((item, i) => (
+          <Card key={i}>
+            <CardContent className="p-5">
+              <div className="flex items-center gap-3">
+                <div className={`h-10 w-10 rounded-lg ${item.bg} flex items-center justify-center ${item.color}`}>
+                  <item.icon className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">{item.label}</p>
+                  <p className="text-xl font-bold">{item.value}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm text-muted-foreground">{item.label}</p>
-                <p className="text-xl font-bold">{item.value}</p>
-              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {/* Recent orders */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base">最近订单</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {recentOrders.length === 0 ? (
+            <p className="text-sm text-muted-foreground text-center py-4">暂无订单</p>
+          ) : (
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>订单号</TableHead>
+                    <TableHead>用户ID</TableHead>
+                    <TableHead>金额</TableHead>
+                    <TableHead>状态</TableHead>
+                    <TableHead>时间</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {recentOrders.map((order) => {
+                    const st = statusLabels[order.status] || { label: order.status, color: "" };
+                    return (
+                      <TableRow key={order.id}>
+                        <TableCell>#{order.id}</TableCell>
+                        <TableCell>{order.userId}</TableCell>
+                        <TableCell className="font-medium text-red-600">¥{parseFloat(order.totalAmount).toFixed(2)}</TableCell>
+                        <TableCell>
+                          <span className={`text-xs px-2 py-0.5 rounded-full ${st.color}`}>{st.label}</span>
+                        </TableCell>
+                        <TableCell className="text-sm text-muted-foreground">
+                          {new Date(order.createdAt).toLocaleString("zh-CN")}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
             </div>
-          </CardContent>
-        </Card>
-      ))}
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 }

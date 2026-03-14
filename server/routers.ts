@@ -73,6 +73,8 @@ export const appRouter = router({
       coverImage: z.string().optional(),
       categoryId: z.number().optional(),
       stock: z.number().optional().default(100),
+      publisher: z.string().optional(),
+      pageCount: z.number().optional(),
     })).mutation(async ({ input }) => {
       return db.createBook(input as any);
     }),
@@ -87,6 +89,8 @@ export const appRouter = router({
       coverImage: z.string().optional(),
       categoryId: z.number().nullable().optional(),
       stock: z.number().optional(),
+      publisher: z.string().optional(),
+      pageCount: z.number().optional(),
       status: z.enum(["active", "inactive"]).optional(),
     })).mutation(async ({ input }) => {
       const { id, ...data } = input;
@@ -191,6 +195,13 @@ export const appRouter = router({
       if (!order) throw new TRPCError({ code: "NOT_FOUND", message: "订单不存在" });
       if (order.status !== "pending") throw new TRPCError({ code: "BAD_REQUEST", message: "只能取消待付款订单" });
       await db.updateOrderStatus(input.id, "cancelled");
+      return { success: true };
+    }),
+    pay: protectedProcedure.input(z.object({ id: z.number() })).mutation(async ({ ctx, input }) => {
+      const order = await db.getOrderById(input.id, ctx.user.id);
+      if (!order) throw new TRPCError({ code: "NOT_FOUND", message: "订单不存在" });
+      if (order.status !== "pending") throw new TRPCError({ code: "BAD_REQUEST", message: "该订单无法支付" });
+      await db.updateOrderStatus(input.id, "paid");
       return { success: true };
     }),
   }),

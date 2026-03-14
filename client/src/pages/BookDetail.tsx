@@ -117,7 +117,7 @@ export default function BookDetail() {
             </div>
           </div>
 
-          <div className="flex items-center gap-4 text-sm">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
             <div className="flex items-center gap-1">
               <Package className="h-4 w-4 text-muted-foreground" />
               <span>库存：{book.stock > 0 ? `${book.stock} 件` : "暂时缺货"}</span>
@@ -126,6 +126,18 @@ export default function BookDetail() {
               <Check className="h-4 w-4 text-green-500" />
               <span>已售 {book.salesCount} 本</span>
             </div>
+            {(book as any).publisher && (
+              <div className="flex items-center gap-1">
+                <BookOpen className="h-4 w-4 text-muted-foreground" />
+                <span>出版社：{(book as any).publisher}</span>
+              </div>
+            )}
+            {(book as any).pageCount && (
+              <div className="flex items-center gap-1">
+                <BookOpen className="h-4 w-4 text-muted-foreground" />
+                <span>页数：{(book as any).pageCount} 页</span>
+              </div>
+            )}
           </div>
 
           <Separator />

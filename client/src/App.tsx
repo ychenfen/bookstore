@@ -5,6 +5,7 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import BookList from "./pages/BookList";
 import BookDetail from "./pages/BookDetail";
@@ -13,6 +14,7 @@ import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
 import OrderDetail from "./pages/OrderDetail";
 import Admin from "./pages/Admin";
+import Profile from "./pages/Profile";
 
 function Router() {
   return (
@@ -25,6 +27,7 @@ function Router() {
       <Route path={"/orders"} component={Orders} />
       <Route path={"/orders/:id"} component={OrderDetail} />
       <Route path={"/admin"} component={Admin} />
+      <Route path={"/profile"} component={Profile} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
@@ -37,8 +40,13 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
-          <Navbar />
-          <Router />
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-1">
+              <Router />
+            </main>
+            <Footer />
+          </div>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

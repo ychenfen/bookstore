@@ -97,6 +97,10 @@ export default function Navbar() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuItem onClick={() => navigate("/profile")}>
+                  <User className="mr-2 h-4 w-4" />
+                  个人中心
+                </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => navigate("/orders")}>
                   <Package className="mr-2 h-4 w-4" />
                   我的订单
@@ -155,6 +159,10 @@ export default function Navbar() {
             </Button>
             {isAuthenticated && (
               <>
+                <Button variant="ghost" className="justify-start" onClick={() => { navigate("/profile"); setMobileMenuOpen(false); }}>
+                  <User className="h-4 w-4 mr-2" />
+                  个人中心
+                </Button>
                 <Button variant="ghost" className="justify-start" onClick={() => { navigate("/cart"); setMobileMenuOpen(false); }}>
                   <ShoppingCart className="h-4 w-4 mr-2" />
                   购物车 {cartCount > 0 && `(${cartCount})`}

@@ -246,6 +246,8 @@ function BookFormDialog({ open, onOpenChange, categories, initialData, onSubmit,
     coverImage: initialData?.coverImage || "",
     categoryId: initialData?.categoryId ? String(initialData.categoryId) : "none",
     stock: initialData?.stock || 100,
+    publisher: initialData?.publisher || "",
+    pageCount: initialData?.pageCount || "",
     status: initialData?.status || "active",
   });
 
@@ -258,6 +260,8 @@ function BookFormDialog({ open, onOpenChange, categories, initialData, onSubmit,
       ...form,
       categoryId: form.categoryId !== "none" ? Number(form.categoryId) : undefined,
       stock: Number(form.stock),
+      publisher: form.publisher || undefined,
+      pageCount: form.pageCount ? Number(form.pageCount) : undefined,
     });
   };
 
@@ -297,6 +301,16 @@ function BookFormDialog({ open, onOpenChange, categories, initialData, onSubmit,
             <div className="space-y-1">
               <Label>库存</Label>
               <Input type="number" value={form.stock} onChange={(e) => setForm(f => ({ ...f, stock: Number(e.target.value) }))} />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-1">
+              <Label>出版社</Label>
+              <Input value={form.publisher} onChange={(e) => setForm(f => ({ ...f, publisher: e.target.value }))} placeholder="如：人民文学出版社" />
+            </div>
+            <div className="space-y-1">
+              <Label>页数</Label>
+              <Input type="number" value={form.pageCount} onChange={(e) => setForm(f => ({ ...f, pageCount: e.target.value }))} placeholder="如：320" />
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3">

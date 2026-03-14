@@ -36,6 +36,14 @@ export default function Orders() {
     onError: (err) => toast.error(err.message),
   });
 
+  const payMutation = trpc.order.pay.useMutation({
+    onSuccess: () => {
+      toast.success("支付成功！");
+      utils.order.list.invalidate();
+    },
+    onError: (err: any) => toast.error(err.message),
+  });
+
   if (authLoading) {
     return (
       <div className="container py-8">
@@ -110,15 +118,24 @@ export default function Orders() {
                       </div>
                       <div className="flex gap-2">
                         {order.status === "pending" && (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="text-destructive"
-                            onClick={() => cancelMutation.mutate({ id: order.id })}
-                            disabled={cancelMutation.isPending}
-                          >
-                            取消订单
-                          </Button>
+                          <>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="text-destructive"
+                              onClick={() => cancelMutation.mutate({ id: order.id })}
+                              disabled={cancelMutation.isPending}
+                            >
+                              取消订单
+                            </Button>
+                            <Button
+                              size="sm"
+                              onClick={() => payMutation.mutate({ id: order.id })}
+                              disabled={payMutation.isPending}
+                            >
+                              立即支付
+                            </Button>
+                          </>
                         )}
                         <Button variant="outline" size="sm" onClick={() => navigate(`/orders/${order.id}`)}>
                           查看详情 <ChevronRight className="h-4 w-4 ml-1" />

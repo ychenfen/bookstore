@@ -37,6 +37,8 @@ export const books = mysqlTable("books", {
   categoryId: int("categoryId"),
   stock: int("stock").default(100).notNull(),
   salesCount: int("salesCount").default(0).notNull(),
+  publisher: varchar("publisher", { length: 255 }),
+  pageCount: int("pageCount"),
   status: mysqlEnum("status", ["active", "inactive"]).default("active").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),

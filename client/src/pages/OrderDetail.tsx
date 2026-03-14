@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "sonner";
-import { ArrowLeft, Package, MapPin, Phone, User, FileText } from "lucide-react";
+import { ArrowLeft, Package, MapPin, Phone, User, FileText, CreditCard } from "lucide-react";
 import { useLocation, useParams } from "wouter";
 
 const statusMap: Record<string, { label: string; variant: "default" | "secondary" | "destructive" | "outline" }> = {
@@ -34,6 +34,15 @@ export default function OrderDetail() {
       utils.order.list.invalidate();
     },
     onError: (err) => toast.error(err.message),
+  });
+
+  const payMutation = trpc.order.pay.useMutation({
+    onSuccess: () => {
+      toast.success("支付成功！");
+      utils.order.detail.invalidate({ id: orderId });
+      utils.order.list.invalidate();
+    },
+    onError: (err: any) => toast.error(err.message),
   });
 
   if (orderQuery.isLoading) {
@@ -162,7 +171,7 @@ export default function OrderDetail() {
 
         {/* Actions */}
         {order.status === "pending" && (
-          <div className="flex justify-end">
+          <div className="flex justify-end gap-3">
             <Button
               variant="outline"
               className="text-destructive"
@@ -170,6 +179,13 @@ export default function OrderDetail() {
               disabled={cancelMutation.isPending}
             >
               取消订单
+            </Button>
+            <Button
+              onClick={() => payMutation.mutate({ id: order.id })}
+              disabled={payMutation.isPending}
+            >
+              <CreditCard className="h-4 w-4 mr-2" />
+              {payMutation.isPending ? "支付中..." : "立即支付"}
             </Button>
           </div>
         )}

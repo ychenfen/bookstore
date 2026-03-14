@@ -25,3 +25,6 @@
 - [x] Frontend: Responsive design
 - [x] Frontend: Theme and styling (clean, modern)
 - [x] Vitest unit tests
+- [x] Add cover images for all books
+- [x] Improve client-side book card image display
+- [x] Improve admin panel book image display

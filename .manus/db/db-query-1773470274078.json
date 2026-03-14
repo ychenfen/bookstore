@@ -1,0 +1,94 @@
+{
+  "query": "SELECT id, title, author, coverImage FROM books ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 28x2P3JmTyziHE5.root --database KWUBsCGWudGpaLVFQWSxu4 --execute SELECT id, title, author, coverImage FROM books ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "活着",
+      "author": "余华",
+      "coverImage": "https://img3.doubanio.com/view/subject/l/public/s29053580.jpg"
+    },
+    {
+      "id": "2",
+      "title": "三体",
+      "author": "刘慈欣",
+      "coverImage": "https://img2.doubanio.com/view/subject/l/public/s2768378.jpg"
+    },
+    {
+      "id": "3",
+      "title": "百年孤独",
+      "author": "加西亚·马尔克斯",
+      "coverImage": "https://img1.doubanio.com/view/subject/l/public/s6384944.jpg"
+    },
+    {
+      "id": "4",
+      "title": "深入理解计算机系统",
+      "author": "Randal E. Bryant",
+      "coverImage": "https://img9.doubanio.com/view/subject/l/public/s29195878.jpg"
+    },
+    {
+      "id": "5",
+      "title": "算法导论",
+      "author": "Thomas H. Cormen",
+      "coverImage": "https://img9.doubanio.com/view/subject/l/public/s25648004.jpg"
+    },
+    {
+      "id": "6",
+      "title": "JavaScript高级程序设计",
+      "author": "Matt Frisbie",
+      "coverImage": "https://img2.doubanio.com/view/subject/l/public/s33837174.jpg"
+    },
+    {
+      "id": "7",
+      "title": "经济学原理",
+      "author": "曼昆",
+      "coverImage": "https://img3.doubanio.com/view/subject/l/public/s3802498.jpg"
+    },
+    {
+      "id": "8",
+      "title": "人类简史",
+      "author": "尤瓦尔·赫拉利",
+      "coverImage": "https://img3.doubanio.com/view/subject/l/public/s27814883.jpg"
+    },
+    {
+      "id": "9",
+      "title": "时间简史",
+      "author": "史蒂芬·霍金",
+      "coverImage": "https://img9.doubanio.com/view/subject/l/public/s1Mo1453.jpg"
+    },
+    {
+      "id": "10",
+      "title": "设计心理学",
+      "author": "唐纳德·诺曼",
+      "coverImage": "https://img1.doubanio.com/view/subject/l/public/s27313176.jpg"
+    },
+    {
+      "id": "11",
+      "title": "红楼梦",
+      "author": "曹雪芹",
+      "coverImage": "https://img1.doubanio.com/view/subject/l/public/s1070959.jpg"
+    },
+    {
+      "id": "12",
+      "title": "Python编程：从入门到实践",
+      "author": "Eric Matthes",
+      "coverImage": "https://img2.doubanio.com/view/subject/l/public/s29735387.jpg"
+    },
+    {
+      "id": "13",
+      "title": "Test Book 1773467980765",
+      "author": "Test Author",
+      "coverImage": "NULL"
+    },
+    {
+      "id": "14",
+      "title": "Test Book 1773468008426",
+      "author": "Test Author",
+      "coverImage": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tauthor\tcoverImage\n1\t活着\t余华\thttps://img3.doubanio.com/view/subject/l/public/s29053580.jpg\n2\t三体\t刘慈欣\thttps://img2.doubanio.com/view/subject/l/public/s2768378.jpg\n3\t百年孤独\t加西亚·马尔克斯\thttps://img1.doubanio.com/view/subject/l/public/s6384944.jpg\n4\t深入理解计算机系统\tRandal E. Bryant\thttps://img9.doubanio.com/view/subject/l/public/s29195878.jpg\n5\t算法导论\tThomas H. Cormen\thttps://img9.doubanio.com/view/subject/l/public/s25648004.jpg\n6\tJavaScript高级程序设计\tMatt Frisbie\thttps://img2.doubanio.com/view/subject/l/public/s33837174.jpg\n7\t经济学原理\t曼昆\thttps://img3.doubanio.com/view/subject/l/public/s3802498.jpg\n8\t人类简史\t尤瓦尔·赫拉利\thttps://img3.doubanio.com/view/subject/l/public/s27814883.jpg\n9\t时间简史\t史蒂芬·霍金\thttps://img9.doubanio.com/view/subject/l/public/s1Mo1453.jpg\n10\t设计心理学\t唐纳德·诺曼\thttps://img1.doubanio.com/view/subject/l/public/s27313176.jpg\n11\t红楼梦\t曹雪芹\thttps://img1.doubanio.com/view/subject/l/public/s1070959.jpg\n12\tPython编程：从入门到实践\tEric Matthes\thttps://img2.doubanio.com/view/subject/l/public/s29735387.jpg\n13\tTest Book 1773467980765\tTest Author\tNULL\n14\tTest Book 1773468008426\tTest Author\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 1544
+}

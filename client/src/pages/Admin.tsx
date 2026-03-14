@@ -156,6 +156,7 @@ function BooksPanel() {
             <TableHeader>
               <TableRow>
                 <TableHead>ID</TableHead>
+                <TableHead>封面</TableHead>
                 <TableHead>书名</TableHead>
                 <TableHead>作者</TableHead>
                 <TableHead>价格</TableHead>
@@ -169,6 +170,15 @@ function BooksPanel() {
               {books.map((book) => (
                 <TableRow key={book.id}>
                   <TableCell>{book.id}</TableCell>
+                  <TableCell>
+                    <div className="w-10 h-14 rounded bg-muted overflow-hidden">
+                      {book.coverImage ? (
+                        <img src={book.coverImage} alt="" className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-xs text-muted-foreground">无</div>
+                      )}
+                    </div>
+                  </TableCell>
                   <TableCell className="font-medium max-w-[200px] truncate">{book.title}</TableCell>
                   <TableCell>{book.author}</TableCell>
                   <TableCell>¥{parseFloat(book.price).toFixed(2)}</TableCell>
@@ -318,6 +328,11 @@ function BookFormDialog({ open, onOpenChange, categories, initialData, onSubmit,
           <div className="space-y-1">
             <Label>封面图片URL</Label>
             <Input value={form.coverImage} onChange={(e) => setForm(f => ({ ...f, coverImage: e.target.value }))} placeholder="https://..." />
+            {form.coverImage && (
+              <div className="mt-2 w-20 h-28 rounded border overflow-hidden bg-muted">
+                <img src={form.coverImage} alt="封面预览" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+              </div>
+            )}
           </div>
           <div className="space-y-1">
             <Label>简介</Label>

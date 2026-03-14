@@ -35,7 +35,7 @@
 - [ ] Check and fix: admin CRUD operations all work
 - [x] Check and fix: admin order status management (ship, complete)
 - [x] Enrich: add more books to cover all categories
-- [ ] Enrich: homepage show books with cover images properly
+- [x] Enrich: homepage show books with cover images properly
 - [x] Enrich: book detail page show more info (ISBN, publisher, pages)
 - [x] Enrich: user profile page
 - [x] Enrich: footer component

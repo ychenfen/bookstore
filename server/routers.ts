@@ -153,6 +153,14 @@ export const appRouter = router({
       const cartItemsList = await db.getCartItems(ctx.user.id);
       if (cartItemsList.length === 0) throw new TRPCError({ code: "BAD_REQUEST", message: "购物车为空" });
 
+      // Validate stock
+      for (const item of cartItemsList) {
+        if (!item.book) throw new TRPCError({ code: "BAD_REQUEST", message: `书籍不存在` });
+        if (item.book.stock < item.quantity) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: `《${item.book.title}》库存不足，当前库存${item.book.stock}册` });
+        }
+      }
+
       // Calculate total
       let totalAmount = 0;
       const items = cartItemsList.map(item => {

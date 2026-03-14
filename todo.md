@@ -44,4 +44,4 @@
 - [ ] Enrich: empty state improvements across all pages
 - [x] Add simulate payment feature for orders
 - [x] Add "pay now" button for pending orders
-- [ ] Enrich admin dashboard stats (recent orders list)
+- [x] Enrich admin dashboard stats (recent orders list)

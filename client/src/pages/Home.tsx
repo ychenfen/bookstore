@@ -163,16 +163,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t py-8 bg-muted/30">
-        <div className="container text-center text-sm text-muted-foreground">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <BookOpen className="h-5 w-5 text-primary" />
-            <span className="font-medium text-foreground">网上书城</span>
+      {/* Why choose us */}
+      <section className="py-12">
+        <div className="container">
+          <h2 className="text-xl font-bold text-center mb-8">为什么选择我们</h2>
+          <div className="grid sm:grid-cols-3 gap-6">
+            <div className="text-center space-y-3 p-6 rounded-xl bg-muted/30">
+              <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mx-auto">
+                <BookOpen className="h-6 w-6 text-blue-600" />
+              </div>
+              <h3 className="font-medium">海量书籍</h3>
+              <p className="text-sm text-muted-foreground">涵盖文学、科技、经管、人文等多个分类，满足不同读者的需求</p>
+            </div>
+            <div className="text-center space-y-3 p-6 rounded-xl bg-muted/30">
+              <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mx-auto">
+                <TrendingUp className="h-6 w-6 text-green-600" />
+              </div>
+              <h3 className="font-medium">优惠价格</h3>
+              <p className="text-sm text-muted-foreground">天天低价，多种优惠活动，让您以最优惠的价格享受阅读的乐趣</p>
+            </div>
+            <div className="text-center space-y-3 p-6 rounded-xl bg-muted/30">
+              <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto">
+                <Truck className="h-6 w-6 text-purple-600" />
+              </div>
+              <h3 className="font-medium">快速配送</h3>
+              <p className="text-sm text-muted-foreground">下单后快速发货，全国范围配送，让好书尽快送达您的手中</p>
+            </div>
           </div>
-          <p>Spring Boot + Vue3 课程项目 &copy; {new Date().getFullYear()}</p>
         </div>
-      </footer>
+      </section>
     </div>
   );
 }
